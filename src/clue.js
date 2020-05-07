@@ -31,36 +31,55 @@ const suspectsArray = [
 
 // Rooms Collection
 const roomsArray = [
-    new Room('The Library'),
-    new Room('The Kitchen'),
-    new Room('The Conservatory'),
-    new Room('The Leather Room'),
-    new Room('The Dungeons'),
-    new Room('The Batcave'),
-    new Room('The Bar'),
-    new Room('The Servants Quaters'),
-    new Room('The Owlery'),
-    new Room('The Daycare'),
-    new Room('The Music Room'),
-    new Room('The R&D Department'),
-    new Room('The Greenhouse'),
-    new Room('The Transfiguration Classroom'),
-    new Room('The Observatory')
+    new Room('Library'),
+    new Room('Kitchen'),
+    new Room('Conservatory'),
+    new Room('Leather Room'),
+    new Room('Dungeons'),
+    new Room('Batcave'),
+    new Room('Bar'),
+    new Room('Servants Quaters'),
+    new Room('Owlery'),
+    new Room('Daycare'),
+    new Room('Music Room'),
+    new Room('R&D Department'),
+    new Room('Greenhouse'),
+    new Room('Transfiguration Classroom'),
+    new Room('Observatory')
 ];
 
 // Weapons Collection
 const weaponsArray = [
     new Weapon('Your Mum', '99999999kg'),
-    new Weapon('A Rusty Spoon', '100g'),
-    new Weapon('A Backhanded Compliment', '0g'),
-    new Weapon('The Colonel\'s Leather Whip', '2kg'),
-    new Weapon('The Princess\' Tiara', '400g'),
-    new Weapon('A Carefully Placed Banana Skin', '100g'),
-    new Weapon('An Incorrectly Coloured Washing Machine', '300kg'),
-    new Weapon('The Corona Virus', '0g'),
+    new Weapon('Rusty Spoon', '100g'),
+    new Weapon('Backhanded Compliment', '0g'),
+    new Weapon('Colonel\'s Leather Whip', '2kg'),
+    new Weapon('Princess\' Tiara', '400g'),
+    new Weapon('Carefully Placed Banana Skin', '100g'),
+    new Weapon('Incorrectly Coloured Washing Machine', '300kg'),
+    new Weapon('Corona Virus', '0g'),
     new Weapon('Staggeringly Dull Conversation', '0g')
 ];
 
 // ITERATION 2
 
+let cardStack = suspectsArray.concat(weaponsArray, roomsArray);
+
+function selectRandom(array) {
+    let index = Math.floor(Math.random() * array.length || -1);
+    return array[index];
+}
+
+function pickMystery() {
+    let envelope = {};
+    envelope.suspect = selectRandom(suspectsArray);
+    envelope.weapon = selectRandom(weaponsArray);
+    envelope.room = selectRandom(roomsArray);
+    return envelope;
+}
+
 // ITERATION 3
+
+function revealMystery(envelope) {
+    return `${envelope.suspect.firstName} ${envelope.suspect.lastName} killed Mr. Boddy using the ${envelope.weapon.name} in the ${envelope.room.name}!`;
+}
